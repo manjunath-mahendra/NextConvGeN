@@ -1,0 +1,8 @@
+Dataset Name,Feature-consistency_TVAE,Feature-consistency_CTGAN,Feature-consistency_convexCTGAN,Feature-consistency_CTABGAN,Feature-consistency_convexCTABGAN,Feature-consistency_TabDDPM,Feature-consistency_NextConvGeN
+HeartFailure,0.0667,0.1918,0.1636,0.1518,0.2299,0.1107,0.0558
+HeartDisease,0.073,0.2168,0.1642,0.2632,0.2161,0.042,0.0644
+IndianLiverPatients,0.0453,0.1095,0.0429,0.0753,0.0884,0.0462,0.0247
+PimaIndianDiabetes,0.0373,0.1188,0.0464,0.1335,0.1456,0.0562,0.0364
+ContraceptiveMethods,0.0238,0.0906,0.0581,0.1018,0.0998,0.0207,0.0261
+Obesity,0.3465,0.7695,0.4973,0.7863,0.783,0.0301,0.038
+Average,0.0987,0.2495,0.1621,0.252,0.2605,0.051,0.0409

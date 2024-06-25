@@ -1,0 +1,7 @@
+Dataset Name,EuclideanDistance_Mean_TVAE,EuclideanDistance_Mean_CTGAN,EuclideanDistance_Mean_convexCTGAN,EuclideanDistance_Mean_CTABGAN,EuclideanDistance_Mean_convexCTABGAN,EuclideanDistance_Mean_TabDDPM,EuclideanDistance_Mean_NextConvGeN
+HeartFailure,4.8805,4.9562,4.9463,4.995,4.9935,4.9278,4.9271
+HeartDisease,5.0452,5.1989,5.1855,5.2138,5.2142,5.1402,5.1555
+IndianLiverPatients,4.2384,4.3036,4.2965,4.3442,4.4517,4.1379,4.2176
+PimaIndianDiabetes,4.0437,4.0612,4.0601,4.1068,4.1039,4.0507,4.0079
+ContraceptiveMethods,4.2315,4.3366,4.3008,4.3698,4.364,4.2888,4.2963
+Obesity,5.4495,5.6633,5.621,5.6208,5.6048,5.5626,5.5617

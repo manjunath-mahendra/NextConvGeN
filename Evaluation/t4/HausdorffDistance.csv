@@ -1,0 +1,7 @@
+Dataset Name,HausdorffDistance_TVAE,HausdorffDistance_CTGAN,HausdorffDistance_convexCTGAN,HausdorffDistance_CTABGAN,HausdorffDistance_convexCTABGAN,HausdorffDistance_TabDDPM,HausdorffDistance_NextConvGeN
+HeartFailure,4.6528,6.1345,6.6887,3.6852,3.9961,3.982,3.8701
+HeartDisease,3.8208,5.8404,4.8269,3.9749,4.2115,4.0434,4.2786
+IndianLiverPatients,12.5003,7.8064,9.7488,3.6016,3.6918,7.7255,5.1006
+PimaIndianDiabetes,3.2486,3.7598,4.43,3.1776,3.175,3.7945,2.5414
+ContraceptiveMethods,7.3325,4.1047,3.705,3.273,3.2631,3.2602,3.7285
+Obesity,4.8686,6.2662,6.1187,4.4861,5.059,1.9176,3.3884

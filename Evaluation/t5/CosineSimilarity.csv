@@ -1,0 +1,7 @@
+Dataset Name,CosineSimilarity_TVAE,CosineSimilarity_CTGAN,CosineSimilarity_convexCTGAN,CosineSimilarity_CTABGAN,CosineSimilarity_convexCTABGAN,CosineSimilarity_TabDDPM,CosineSimilarity_NextConvGeN
+HeartFailure,0.0025,0.0012,0.0015,0.0003,0.0003,0.0029,-0.0
+HeartDisease,0.0018,0.0007,0.001,-0.0,-0.0001,0.002,0.0001
+IndianLiverPatients,0.0066,0.0093,0.0083,0.0029,0.0027,0.016,0.0138
+PimaIndianDiabetes,0.0079,0.0047,0.0042,0.0012,0.0008,0.0011,0.0074
+ContraceptiveMethods,0.0089,0.0037,0.0052,0.0,0.0008,0.006,0.005
+Obesity,0.0066,0.003,0.0055,0.0002,0.0017,0.0069,0.0068

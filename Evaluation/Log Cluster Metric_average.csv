@@ -1,0 +1,8 @@
+Dataset Name,Log Cluster Metric_TVAE,Log Cluster Metric_CTGAN,Log Cluster Metric_convexCTGAN,Log Cluster Metric_CTABGAN,Log Cluster Metric_convexCTABGAN,Log Cluster Metric_TabDDPM,Log Cluster Metric_NextConvGeN
+HeartFailure,-9.5402,-7.8421,-10.5978,-6.2545,-2.7713,-4.0491,-2.0681
+HeartDisease,-8.7799,-5.0021,-5.8847,-2.3625,-1.735,-10.9247,-2.067
+IndianLiverPatients,-2.4319,-4.9052,-6.2803,-2.1909,-2.827,-6.5057,-8.9846
+PimaIndianDiabetes,-6.1012,-8.949,-11.7753,-6.3372,-7.3846,-2.0017,-12.7566
+ContraceptiveMethods,-5.0534,-6.5806,-7.4103,-2.3289,-2.7046,-10.5784,-9.2276
+Obesity,-6.6065,-7.7256,-8.466,-1.5535,-2.1853,-11.0229,-10.9935
+Average,-6.4189,-6.8341,-8.4024,-3.5046,-3.2679,-7.5137,-7.6829

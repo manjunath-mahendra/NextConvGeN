@@ -1,0 +1,8 @@
+Dataset Name,Feature Correlations Difference_TVAE,Feature Correlations Difference_CTGAN,Feature Correlations Difference_convexCTGAN,Feature Correlations Difference_CTABGAN,Feature Correlations Difference_convexCTABGAN,Feature Correlations Difference_TabDDPM,Feature Correlations Difference_NextConvGeN
+HeartFailure,0.0653,0.0499,0.0548,0.0507,0.0516,0.24,0.2308
+HeartDisease,0.0868,0.1097,0.0953,0.0985,0.0946,0.0614,0.2775
+IndianLiverPatients,0.1214,0.1066,0.0925,0.1027,0.0983,0.0675,0.0268
+PimaIndianDiabetes,0.1639,0.0993,0.1262,0.1077,0.1073,0.2657,0.0416
+ContraceptiveMethods,0.0615,0.0204,0.0266,0.0215,0.0213,0.0069,0.0075
+Obesity,0.028,0.0903,0.0569,,,0.0109,0.0112
+Average,0.0878,0.0794,0.0754,0.0762,0.0746,0.1087,0.0993

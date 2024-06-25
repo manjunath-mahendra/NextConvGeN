@@ -1,0 +1,8 @@
+Dataset Name,KL divergence_TVAE,KL divergence_CTGAN,KL divergence_convexCTGAN,KL divergence_CTABGAN,KL divergence_convexCTABGAN,KL divergence_TabDDPM,KL divergence_NextConvGeN
+HeartFailure,0.1726,0.0056,0.0252,0.0307,0.0312,0.0228,0.0059
+HeartDisease,0.0617,0.0106,0.0272,0.23,0.2405,0.0051,0.0133
+IndianLiverPatients,0.3083,0.0272,0.0228,0.0606,0.0577,0.0004,0.0004
+PimaIndianDiabetes,0.0,0.0342,0.0,0.1383,0.0909,0.0117,0.0057
+ContraceptiveMethods,0.1026,0.0092,0.0258,0.24,0.1792,0.0014,0.0029
+Obesity,0.059,0.0314,0.0136,0.3701,0.08,0.001,0.0023
+Average,0.1174,0.0197,0.0191,0.1783,0.1132,0.0071,0.0051
