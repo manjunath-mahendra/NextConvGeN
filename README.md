@@ -1,15 +1,4 @@
 # NextConvGeN
-## Converting LaTeX to GitHub README Format
-
-### Understanding the Differences
-Before we dive into the conversion, it's important to understand the key differences between LaTeX and GitHub README:
-* **LaTeX** is primarily for typesetting complex documents, while **GitHub README** is for providing concise information about a project.
-* **LaTeX** uses commands to format text, while **GitHub README** uses Markdown syntax.
-* **LaTeX** often employs intricate structures, while **GitHub README** is simpler and focuses on readability.
-
-### Conversion Steps
-Here's the converted text using GitHub README Markdown syntax:
-
 **Parameters of FDC and NextConvGeN algorithms**
 
 The algorithms discussed in this section, the FDC and the NextConvGeN algorithm, employ specific parameters to configure their behavior and customize their operations. To facilitate the reproducibility of our work, here we specify some details of our experiments.
