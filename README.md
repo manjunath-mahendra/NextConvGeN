@@ -22,3 +22,29 @@ The NextConvGeN algorithm utilizes five parameters: `neb`, `gen`, `disc_train_co
 * `alpha_clip`: Takes a value between 0 and 1 representing the percentage of clipping the maximum convex coefficient.
 
 We have set the `gen` value equal to `neb` to generate synthetic points that match the size of the input neighborhood.
+
+To preprocess and prepare data for **NextConvGeN** training, follow the steps below:
+
+1. **Data Preprocessing**: Start with separating feature types and converting data types if necessary.
+   - After downloading this repository, open the terminal and navigate to the folder `DataPreprocessing`.
+   - Run the Python script:
+     ```bash
+     python batch_preprocessing.py
+     ```
+
+2. **Dataset Division and Preparation**: Divide the data into train, test, and holdout sets, and convert column names into numerical format for NextConvGeN training.
+   - Navigate to the folder `DataPreparing` and run the following Python script:
+     ```bash
+     python batch_data_preparing.py
+     ```
+
+3. **Data Generation**: Generate synthetic data by running the Python script:
+   ```bash
+   python generators.py
+   ```
+
+4. **Evaluation of Synthetic Data**: Evaluate the generated synthetic data.
+   - Navigate to the folder `Evaluation` and run the following script:
+     ```bash
+     python DataEvaluation.py
+     
