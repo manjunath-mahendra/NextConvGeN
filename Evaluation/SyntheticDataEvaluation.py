@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import GradientBoostingClassifier
-from sklearn.tree import DecisionTreeClassifier 
 from sklearn.linear_model import LogisticRegression
 from scipy.spatial import distance
 import seaborn as sns
@@ -130,7 +129,7 @@ def calculate_propensity_scores(real_data, synthetic_data, label_column, random_
     probability = pd.DataFrame(classifier.predict_proba(features))
     moving_sum=0
     for i in probability[1]:
-        moving_sum+=np.square(i - 0.5)
+        moving_sum+=np.sqrt(np.square(i - 0.5))
     propensity_score= moving_sum / probability.shape[0]
     real_data.drop([label_column], axis=1, inplace=True)
     synthetic_data.drop([label_column], axis=1, inplace=True)
@@ -319,7 +318,6 @@ def cluster_wise_val_score(ref_list,pred_list):
 def HoldOutAnalysis(real_train_data, hold_out_data, synthetic_df_list, target ='Target', algorithim_names=['NextConvGeN', 'TabDDPM']):
     clf = GradientBoostingClassifier(n_estimators=20, learning_rate=0.5, max_features=2, max_depth=2, random_state=42)
     cv_score_real=np.average(cross_val_score(clf, real_train_data.drop([target],axis=1), real_train_data[target],cv=5))
-    #print(cv_score_real)
     on_real=clf.fit(normalize(real_train_data.drop([target],axis=1)), real_train_data[target])
     predicted_holdout=on_real.predict(hold_out_data.drop([target],axis=1))
     F1_real, GM_real = cluster_wise_val_score(list(hold_out_data[target]),list(predicted_holdout))
@@ -328,7 +326,6 @@ def HoldOutAnalysis(real_train_data, hold_out_data, synthetic_df_list, target ='
     GM_diff=[]
     for synth_data in synthetic_df_list:
         cv_score_synth=np.average(cross_val_score(clf, synth_data.drop([target],axis=1), synth_data[target],cv=5))
-        #print(cv_score_synth)
         cv_diff.append(abs(cv_score_real - cv_score_synth))
         on_synth=clf.fit(normalize(synth_data.drop([target],axis=1)), synth_data[target])
         predicted_holdout=on_synth.predict(hold_out_data.drop([target],axis=1))
@@ -338,55 +335,7 @@ def HoldOutAnalysis(real_train_data, hold_out_data, synthetic_df_list, target ='
     return cv_diff, F1_score_diff, GM_diff
 
 
-def calculate_feature_importance_difference(real_data, synthetic_df_list,hold_out, target_column='Target'):
-    # Create an empty list to store the feature importance
-    feature_importance_differences_scores=[]
-    
-    X_train_real = real_data.drop([target_column],axis=1)
-    y_train_real = real_data[target_column]
-    
-    X_test_real = hold_out.drop([target_column],axis=1)
-    y_test_real = hold_out[target_column]
-    
-    
-    
-    for synthetic_data in synthetic_df_list:
-        X_train_synth = synthetic_data.drop([target_column],axis=1)
-        y_train_synth = synthetic_data[target_column]
-        
-        feature_importance_differences = []
 
-
-        # Iterate over each feature
-        for feature in real_data.columns:
-            if feature != target_column:
-                # Train Gradient Boosting Classifier on real data without the feature
-                real_classifier_without_feature = DecisionTreeClassifier(random_state=42)
-                real_classifier_without_feature.fit(X_train_real.drop([feature],axis=1), y_train_real)
-
-
-                # Train Gradient Boosting Classifier on synthetic data without the feature
-                synth_classifier_without_feature = DecisionTreeClassifier(random_state=42)
-                synth_classifier_without_feature.fit(X_train_synth.drop([feature],axis=1), y_train_synth)
-
-                # Predict on real data and synthetic data with and without the feature
-                F1_without_feature_real, _ = cluster_wise_val_score(list(y_test_real),list(real_classifier_without_feature.predict(X_test_real.drop([feature],axis=1))))
-                F1_without_feature_synth, _ = cluster_wise_val_score(list(y_test_real),list(synth_classifier_without_feature.predict(X_test_real.drop([feature],axis=1))))
-
-                # Calculate the absolute difference in predictions
-                _diff = abs(F1_without_feature_real - F1_without_feature_synth)
-
-                # Append the difference to the list
-                feature_importance_differences.append(_diff)
-
-        # Calculate the average of the differences
-        average_difference = sum(feature_importance_differences) / len(feature_importance_differences)
-        feature_importance_differences_scores.append(average_difference)
-    
-
-    return feature_importance_differences_scores
-
-"""
 def calculate_feature_importance_difference(real_data, synthetic_df_list, target_column='Target'):
     # Create an empty list to store the feature importance
     feature_importance_differences_scores=[]
@@ -435,7 +384,7 @@ def calculate_feature_importance_difference(real_data, synthetic_df_list, target
     
 
     return feature_importance_differences_scores
-"""
+
 def scale_data(df) :
     """Scale a dataframe to get the values between 0 and 1. It returns the scaled dataframe.
     
@@ -523,7 +472,7 @@ def SyntheticdataEvaluationReport(real_data, hold_out, SyntheticDataFrameList, C
         CosineSimilarity.append(CosineDist_mean)
     FeatureCorrelations=FeatureCorrelation(real_data, SyntheticDataFrameList, ContinuousFeatures, NominalFeatures, OrdinalFeatures)
     CrossValidation, F1Score, GeometricMean= HoldOutAnalysis(real_data, hold_out, SyntheticDataFrameList, target = target_column)
-    FeatureConsistency=calculate_feature_importance_difference(real_data, SyntheticDataFrameList, hold_out, target_column=target_column)
+    FeatureConsistency=calculate_feature_importance_difference(real_data, SyntheticDataFrameList,  target_column=target_column)
     import pandas as pd
 
     data = {

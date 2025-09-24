@@ -15,126 +15,138 @@ def EvaluateData(real_data_repo=None, task = "semi-supervised", tn=None):
     DatasetNames=[]
     # List all subdirectories (folders) in the base directory
     all_folders = [folder for folder in os.listdir(base_directory) if os.path.isdir(os.path.join(base_directory, folder))]
-    #all_folders =["Migraine", "LiverCirrhosis","ContraceptiveMethods", "Obesity"]
+
     # Iterate through all the folders
     for folder in all_folders:
-        if folder not in ["Migraine", "Stroke", "LiverCirrhosis", "LungCancer"]:#This line of code is only for the case of CTAB-GAN+ and TVAE
-            print(folder)
-            SyntheticDataFrameList = []
-            info_path = os.path.join(base_directory, folder)
-            nextconvgen_path = os.path.join(syn_directory,'NextConvGeN', folder)
+        print(folder)
+        SyntheticDataFrameList = []
+        info_path = os.path.join(base_directory, folder)
+        nextconvgen_path = os.path.join(syn_directory,'NextConvGeN', folder)
+        
+        ctgan_path = os.path.join(syn_directory,'CTGAN', folder)
+        #convexctgan_path = os.path.join(syn_directory,'convexCTGAN', folder)
 
-            ctgan_path = os.path.join(syn_directory,'CTGAN', folder)
-            convexctgan_path = os.path.join(syn_directory,'convexCTGAN', folder)
+        ctabgan_path = os.path.join(syn_directory,'CTABGAN', folder)
+        #convexctabgan_path = os.path.join(syn_directory,'convexCTABGAN', folder)
 
-            ctabgan_path = os.path.join(syn_directory,'CTABGAN', folder)
-            convexctabgan_path = os.path.join(syn_directory,'convexCTABGAN', folder)
+        CART_path = os.path.join(syn_directory,'CART', folder)
 
-            ctabganplus_path = os.path.join(syn_directory,'CTABGANplus', folder)
+        DataSynth_path = os.path.join(syn_directory,'DataSynth', folder)
 
-            tvae_path = os.path.join(syn_directory,'TVAE', folder)
+        GReaT_path = os.path.join(syn_directory,'GReaT', folder)
 
-            tabddpm_path = os.path.join(syn_directory,'TabDDPM', folder)
+        #Tabula_path = os.path.join(syn_directory,'Tabula', folder)
 
-            # Check if the directory exists in the current folder
-            info_directory = os.path.join(info_path, task)
-            real_data_directory = os.path.join(info_directory, "training_data.csv")
-            holdout_data_directory = os.path.join(info_directory, "holdout_data.csv")
-            nextconvgen_directory = os.path.join(nextconvgen_path, task, "synthetic_data.csv")
+        tabddpm_path = os.path.join(syn_directory,'TabDDPM', folder)
 
-            ctgan_directory = os.path.join(ctgan_path, task, "synthetic_data.csv")
-            convexctgan_directory = os.path.join(convexctgan_path, task, "synthetic_data.csv")
+        # Check if the directory exists in the current folder
+        info_directory = os.path.join(info_path, task)
+        real_data_directory = os.path.join(info_directory, "training_data.csv")
+        holdout_data_directory = os.path.join(info_directory, "holdout_data.csv")
+        nextconvgen_directory = os.path.join(nextconvgen_path, task, "synthetic_data.csv")
 
-            ctabgan_directory = os.path.join(ctabgan_path, task, "synthetic_data.csv")
-            convexctabgan_directory = os.path.join(convexctabgan_path, task, "synthetic_data.csv")
+        ctgan_directory = os.path.join(ctgan_path, task, "synthetic_data.csv")
+        #convexctgan_directory = os.path.join(convexctgan_path, task, "synthetic_data.csv")
 
-            ctabganplus_directory = os.path.join(ctabganplus_path, task, "synthetic_data.csv")
+        ctabgan_directory = os.path.join(ctabgan_path, task, "synthetic_data.csv")
+        #convexctabgan_directory = os.path.join(convexctabgan_path, task, "synthetic_data.csv")
+        CART_directory = os.path.join(CART_path, task, "synthetic_data.csv")
 
-            tvae_directory = os.path.join(tvae_path, task, "synthetic_data.csv")
+        GReaT_directory = os.path.join(GReaT_path, task, "synthetic_data.csv")
 
-            tabddpm_directory = os.path.join(tabddpm_path, task, "synthetic_data.csv")
-            if os.path.exists(info_directory):
+        DataSynth_directory = os.path.join(DataSynth_path, task, "synthetic_data.csv")
 
-                # Load the data
-                real_data = pd.read_csv( real_data_directory)
-                holdout_data = pd.read_csv( holdout_data_directory)
-                nextconvgen_data = pd.read_csv(nextconvgen_directory)
-                SyntheticDataFrameList.append(nextconvgen_data)
+        #Tabula_directory = os.path.join(Tabula_path, task, "synthetic_data.csv")
 
-                ctgan_data = pd.read_csv(ctgan_directory)
-                SyntheticDataFrameList.append(ctgan_data)
-
-                convexctgan_data = pd.read_csv(convexctgan_directory)
-                SyntheticDataFrameList.append(convexctgan_data)
-
-                ctabgan_data = pd.read_csv(ctabgan_directory)
-                SyntheticDataFrameList.append(ctabgan_data)
-
-                convexctabgan_data = pd.read_csv(convexctabgan_directory)
-                SyntheticDataFrameList.append(convexctabgan_data)
-
-                #ctabganplus_data = pd.read_csv(ctabganplus_directory)
-                #SyntheticDataFrameList.append(ctabganplus_data)
-
-                tvae_data = pd.read_csv(tvae_directory)
-                SyntheticDataFrameList.append(tvae_data)
+        tabddpm_directory = os.path.join(tabddpm_path, task, "synthetic_data.csv")
 
 
-                tabddpm_data = pd.read_csv(tabddpm_directory)
-                SyntheticDataFrameList.append(tabddpm_data)
-                print(info_directory)
+        if os.path.exists(info_directory):
 
-                # Load additional info from the 'additional_info.json' file in the 'semi-supervised' directory
-                information_path = os.path.join(info_directory, "additional_info.json")
-                with open(information_path, 'r') as info_file:
-                    info = json.load(info_file)
+            # Load the data
+            real_data = pd.read_csv( real_data_directory)
+            holdout_data = pd.read_csv( holdout_data_directory)
+            nextconvgen_data = pd.read_csv(nextconvgen_directory)
+            SyntheticDataFrameList.append(nextconvgen_data)
 
-                # Extract information from the info dictionary
-                ordinal_list = []
-                nominal_list = []
-                continuous_list = []
+            ctgan_data = pd.read_csv(ctgan_directory)
+            SyntheticDataFrameList.append(ctgan_data)
 
-                if info['indices_ordinal_features'] is not None:
-                    ordinal_list.extend([info['ordered_features'][i] for i in info['indices_ordinal_features']])
+            #convexctgan_data = pd.read_csv(convexctgan_directory)
+            #SyntheticDataFrameList.append(convexctgan_data)
 
-                if info['indices_nominal_features'] is not None:
-                    nominal_list.extend([info['ordered_features'][i] for i in info['indices_nominal_features']])
+            ctabgan_data = pd.read_csv(ctabgan_directory)
+            SyntheticDataFrameList.append(ctabgan_data)
 
-                if info['indices_continuous_features'] is not None:
-                    continuous_list.extend([info['ordered_features'][i] for i in info['indices_continuous_features']])
+            #convexctabgan_data = pd.read_csv(convexctabgan_directory)
+            #SyntheticDataFrameList.append(convexctabgan_data)
 
-                if isinstance(info.get("target"), str):
-                    target=info['target']
-                else:
-                    target=info['target'][0]
+            CART_data = pd.read_csv(CART_directory)
+            SyntheticDataFrameList.append(CART_data)
 
-                # Add the target column
-                if info['target'] is not None:
-                    nominal_list.append(target)
+            GReaT_data = pd.read_csv(GReaT_directory)
+            SyntheticDataFrameList.append(GReaT_data)
 
-                evaluation_report = SyntheticdataEvaluationReport(real_data,holdout_data, SyntheticDataFrameList, continuous_list, ordinal_list, nominal_list, target_column=target, ModelNameList=['NextConvGeN', 'CTGAN', 'convexCTGAN', 'CTABGAN', 'convexCTABGAN', 'TVAE', 'TabDDPM'])
-                #'CTABGANplus',
+            DataSynth_data = pd.read_csv(DataSynth_directory)
+            SyntheticDataFrameList.append(DataSynth_data)
 
-                # Create path
-                result_save_path = os.path.join(tn + "_EvaluationReport", folder, task, "evaluation_report.csv")
+            #Tabula_data = pd.read_csv(Tabula_directory)
+            #SyntheticDataFrameList.append(Tabula_data)
 
-                # Create the directories if they don't exist
-                os.makedirs(os.path.dirname(result_save_path), exist_ok=True)
+            tabddpm_data = pd.read_csv(tabddpm_directory)
+            SyntheticDataFrameList.append(tabddpm_data)
+            print(info_directory)
 
-                evaluation_report.to_csv(result_save_path, index=True)
+            # Load additional info from the 'additional_info.json' file in the 'semi-supervised' directory
+            information_path = os.path.join(info_directory, "additional_info.json")
+            with open(information_path, 'r') as info_file:
+                info = json.load(info_file)
 
-                #evaluation_report=evaluation_report.set_index('Model')
+            # Extract information from the info dictionary
+            ordinal_list = []
+            nominal_list = []
+            continuous_list = []
 
-                ResultDataFrameList.append(evaluation_report)
-                DatasetNames.append(folder)
+            if info['indices_ordinal_features'] is not None:
+                ordinal_list.extend([info['ordered_features'][i] for i in info['indices_ordinal_features']])
 
-                #print("dataframe list: ", ResultDataFrameList)
+            if info['indices_nominal_features'] is not None:
+                nominal_list.extend([info['ordered_features'][i] for i in info['indices_nominal_features']])
 
-                print("Evaluated Synthetic data for {} and stored the report in path sucessfully".format(folder))
+            if info['indices_continuous_features'] is not None:
+                continuous_list.extend([info['ordered_features'][i] for i in info['indices_continuous_features']])
 
+            if isinstance(info.get("target"), str):
+                target=info['target']
             else:
-                print(f"Directory not found in '{folder}'")
+                target=info['target'][0]
 
+            # Add the target column
+            if info['target'] is not None:
+                nominal_list.append(target)
+
+            evaluation_report = SyntheticdataEvaluationReport(real_data,holdout_data, SyntheticDataFrameList, continuous_list, ordinal_list, nominal_list, target_column=target, ModelNameList=['NextConvGeN', 'CTGAN', 'CTABGAN', 'CART','DataSynth','GReaT', 'TabDDPM'])
+
+            # Create path
+            result_save_path = os.path.join(tn + "_EvaluationReport", folder, task, "evaluation_report.csv")
+
+            # Create the directories if they don't exist
+            os.makedirs(os.path.dirname(result_save_path), exist_ok=True)
+
+            evaluation_report.to_csv(result_save_path, index=True)
+
+            #evaluation_report=evaluation_report.set_index('Model')
+
+            ResultDataFrameList.append(evaluation_report)
+            DatasetNames.append(folder)
+
+            #print("dataframe list: ", ResultDataFrameList)
+
+            print("Evaluated Synthetic data for {} and stored the report in path sucessfully".format(folder))
+
+        else:
+            print(f"Directory not found in '{folder}'")
+        
     # Create a new dataframe by combining the dataframes and adding a 'Dataset_Name' column
     new_dataframe_list = [pd.concat([pd.DataFrame([name]*df.shape[0], columns=['Dataset Name']), df], axis=1) for name, df in zip(DatasetNames, ResultDataFrameList)]
 
@@ -151,7 +163,7 @@ def EvaluateData(real_data_repo=None, task = "semi-supervised", tn=None):
     #print("Stacked DataFrame is: ",stacked_df)
 
     # Use the `groupby` method to group by the index (rows) and calculate the mean
-    average_df = stacked_df.groupby(level=0).mean()
+    average_df = stacked_df.groupby(level=0).mean(numeric_only=True)
 
     # If you want to reset the index to the default integer index
     average_df = average_df.reset_index()
