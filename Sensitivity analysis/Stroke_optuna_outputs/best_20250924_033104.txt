@@ -1,0 +1,11 @@
+XConvGeN Sensitivity Analysis (Optuna)
+Timestamp: 20250924_033104
+Direction: minimize
+Best value (|F1_real - F1_synth|): 0.000891
+Best params:
+  - neb: 3
+  - gen: 3
+  - neb_epochs: 18
+  - alpha_clip: 0.7759861893755636
+Best trial F1_real: 0.506618
+Best trial F1_synth: 0.505727
