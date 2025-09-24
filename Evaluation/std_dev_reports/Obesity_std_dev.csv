@@ -1,5 +1,0 @@
-Model,Unnamed: 0,Student-T-test,KL divergence,PropensityScore,PredictRealOrSyn,Log Cluster Metric,Feature Correlations Difference,Cross-validation,F-1 score,Geometric Mean,Feature-consistency,EuclideanDistance_Mean,EuclideanDistance_Std,HausdorffDistance,CosineSimilarity
-CTABGAN,0.0,0.0002,0.0119,0.0076,0.004,0.0083,,0.0186,0.0277,0.0288,0.0428,0.0015,0.0073,0.123,0.0
-CTGAN,0.0,0.0119,0.0099,0.0111,0.0119,4.0543,0.004,0.0082,0.0307,0.0331,0.0298,0.0054,0.0223,0.3085,0.0003
-NextConvGeN,0.0,0.1652,0.0004,0.0003,0.0147,1.2761,0.002,0.0218,0.0268,0.0281,0.013,0.0045,0.0147,0.2004,0.0002
-TabDDPM,0.0,0.0725,0.0002,0.0004,0.0186,1.3141,0.0082,0.0092,0.0248,0.0238,0.0119,0.0056,0.0182,0.5789,0.0002
