@@ -1,8 +1,0 @@
-Dataset Name,PredictRealOrSyn_TVAE,PredictRealOrSyn_CTGAN,PredictRealOrSyn_convexCTGAN,PredictRealOrSyn_CTABGAN,PredictRealOrSyn_convexCTABGAN,PredictRealOrSyn_TabDDPM,PredictRealOrSyn_NextConvGeN
-HeartFailure,0.6186,0.7141,0.6772,0.7458,0.8062,0.762,0.6954
-HeartDisease,0.7451,0.7574,0.7824,0.8827,0.9126,0.4603,0.5852
-IndianLiverPatients,0.7271,0.817,0.7101,0.8399,0.8204,0.529,0.4422
-PimaIndianDiabetes,0.7068,0.7408,0.6052,0.8116,0.7674,0.8587,0.4649
-ContraceptiveMethods,0.6743,0.6277,0.5972,0.8465,0.8289,0.4859,0.5161
-Obesity,0.6434,0.7044,0.6216,0.9407,0.85,0.4659,0.4726
-Average,0.6859,0.7269,0.6656,0.8445,0.8309,0.5936,0.5294
